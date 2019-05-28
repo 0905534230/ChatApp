@@ -59,17 +59,13 @@ public class ChatsFragment extends Fragment{
                     Chatlist chatlist = snapshot.getValue(Chatlist.class);
                     usersList.add(chatlist);
                 }
-
                 chatList();
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
             }
         });
-
-
         return view;
     }
 
