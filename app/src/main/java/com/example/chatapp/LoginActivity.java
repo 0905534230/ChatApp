@@ -1,6 +1,7 @@
 package com.example.chatapp;
 
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -16,10 +17,13 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.rengwuxian.materialedittext.MaterialEditText;
 
+import br.com.simplepass.loading_button_lib.customViews.CircularProgressButton;
+
 public class LoginActivity extends AppCompatActivity {
 
     MaterialEditText email, password;
     Button btn_login;
+
 
     FirebaseAuth auth;
 

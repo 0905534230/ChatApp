@@ -26,20 +26,22 @@
             android:textStyle="bold"/>
 
         <com.rengwuxian.materialedittext.MaterialEditText
+            android:id="@+id/email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/email"
             android:layout_marginTop="10dp"
-            app:met_floatingLabel="normal"
-            android:hint="Email"/>
+            android:hint="Email"
+            android:inputType="textEmailAddress"
+            app:met_floatingLabel="normal" />
 
         <com.rengwuxian.materialedittext.MaterialEditText
+            android:id="@+id/password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/password"
             android:layout_marginTop="10dp"
-            app:met_floatingLabel="normal"
-            android:hint="Password"/>
+            android:hint="Password"
+            android:inputType="textPassword"
+            app:met_floatingLabel="normal" />
 
         <Button
             android:layout_width="match_parent"
@@ -48,7 +50,9 @@
             android:id="@+id/btn_login"
             android:background="@color/colorPrimary"
             android:layout_marginTop="10dp"
-            android:textColor="#fff"/>
+            android:textColor="#fff"
+            />
+
     </LinearLayout>
 
 </RelativeLayout>
