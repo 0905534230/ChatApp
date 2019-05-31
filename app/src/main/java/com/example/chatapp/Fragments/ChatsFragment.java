@@ -36,15 +36,16 @@ public class ChatsFragment extends Fragment {
     private List<User> mUsers;
 
     FirebaseUser fuser;
-    DatabaseReference databaseReference;
+    DatabaseReference reference;
     private List<Chatlist> userList;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
         // Inflate the layout for this fragment
         View view =inflater.inflate(R.layout.fragment_chats, container, false);
 
-        recyclerView = (RecyclerView) view.findViewById(R.id.recycler_view);
+        recyclerView = view.findViewById(R.id.recycler_view);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
@@ -53,8 +54,8 @@ public class ChatsFragment extends Fragment {
         userList = new ArrayList<>();
 
 
-        databaseReference = FirebaseDatabase.getInstance().getReference("ChatList").child(fuser.getUid());
-        databaseReference.addValueEventListener(new ValueEventListener() {
+        reference = FirebaseDatabase.getInstance().getReference("ChatList").child(fuser.getUid());
+        reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 userList.clear();
@@ -78,8 +79,8 @@ public class ChatsFragment extends Fragment {
 
     private void chatList() {
         mUsers = new ArrayList<>();
-        databaseReference = FirebaseDatabase.getInstance().getReference("Users");
-        databaseReference.addValueEventListener(new ValueEventListener() {
+        reference = FirebaseDatabase.getInstance().getReference("Users");
+        reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 mUsers.clear();
