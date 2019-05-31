@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -62,6 +63,20 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
         }else{
             Glide.with(mContext).load(imageUrl).into(holder.profile_image);
         }
+
+        if ( position == mChat.size()-1) {
+            if (chat.getIsseen() == true){
+                holder.txt_seen.setText("Seen");
+
+            }
+            else{
+                holder.txt_seen.setText("Delivered");
+            }
+
+        }
+        else {
+            holder.txt_seen.setVisibility(View.GONE);
+        }
     }
 
     @Override
@@ -74,11 +89,15 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
         public TextView show_message;
         public ImageView profile_image;
 
+        public TextView txt_seen;
+
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
             show_message = itemView.findViewById(R.id.show_message);
             profile_image =itemView.findViewById(R.id.profile_image);
+            txt_seen =itemView.findViewById(R.id.txt_seen);
+
 
         }
     }

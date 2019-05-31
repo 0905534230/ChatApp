@@ -75,15 +75,11 @@ public class ChatsFragment extends Fragment {
             }
         });
 
-        updateToken(FirebaseInstanceId.getInstance().getToken());
-
 
         return view;
     }
 
-    private void updateToken(String token){
 
-    }
 
     private void chatList() {
         mUsers = new ArrayList<>();
