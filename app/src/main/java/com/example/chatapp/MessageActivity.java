@@ -51,6 +51,8 @@ public class MessageActivity extends AppCompatActivity {
 
     Intent intent;
 
+    String userid;
+
 
     ValueEventListener seenListener;
 
@@ -86,7 +88,7 @@ public class MessageActivity extends AppCompatActivity {
 
         intent = getIntent();
 
-        final String userid = intent.getStringExtra("userid");
+        userid = intent.getStringExtra("userid");
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
 
 
@@ -134,7 +136,7 @@ public class MessageActivity extends AppCompatActivity {
     }
 
     private void seenMessage (final String userId) {
-        reference = FirebaseDatabase.getInstance().getReference("Charts");
+        reference = FirebaseDatabase.getInstance().getReference("Chats");
         seenListener = reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -166,6 +168,24 @@ public class MessageActivity extends AppCompatActivity {
         hashMap.put("isseen", false);
 
         reference.child("Chats").push().setValue(hashMap);
+
+        final DatabaseReference chatRef = FirebaseDatabase.getInstance().getReference("Chatlist")
+                .child(firebaseUser.getUid())
+                .child(userid);
+
+        chatRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (!dataSnapshot.exists()) {
+                    chatRef.child("id").setValue(userid);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
 
     }
 
