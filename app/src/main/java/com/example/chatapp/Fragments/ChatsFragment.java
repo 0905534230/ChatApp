@@ -30,6 +30,8 @@ import com.google.firebase.iid.FirebaseInstanceId;
 import java.util.ArrayList;
 import java.util.List;
 
+import Notification.Token;
+
 
 public class ChatsFragment extends Fragment {
 
@@ -75,8 +77,16 @@ public class ChatsFragment extends Fragment {
             }
         });
 
+        updateToken( FirebaseInstanceId.getInstance().getToken());
+
 
         return view;
+    }
+
+    public void updateToken(String token) {
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference( "Tokens" );
+        Token token1 = new Token(token);
+        reference.child(fuser.getUid()).setValue( token1 );
     }
 
 
