@@ -5,6 +5,7 @@ public class Chat {
     private String sender;
     private String receiver;
     private String message;
+    private String type;
     private Boolean isseen;
 
     public Chat(String sender, String receiver, String message, Boolean isseen) {
@@ -48,5 +49,13 @@ public class Chat {
 
     public void setIsseen(Boolean isseen) {
         this.isseen = isseen;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 }

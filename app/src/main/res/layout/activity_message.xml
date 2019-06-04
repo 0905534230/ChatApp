@@ -2,6 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/message_activity"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MessageActivity">
@@ -56,14 +57,41 @@
         android:id="@+id/bottom"
         >
 
-        <EditText
+        <Button
+            android:id="@+id/btn_send_image"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@android:color/transparent"
+            android:text="+"
+            android:textSize="25dp"
+
+            />
+        <hani.momanii.supernova_emoji_library.Helper.EmojiconEditText
             android:id="@+id/text_send"
             android:background="@android:color/transparent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_toLeftOf="@+id/btn_send"
+            android:layout_toRightOf="@id/btn_send_image"
+            android:layout_toLeftOf="@+id/emoji_button"
             android:layout_centerVertical="true"
-            android:hint="Type a message..."/>
+            android:hint="Type a message..." />
+
+        <!--<EditText-->
+            <!--android:id="@+id/text_send"-->
+            <!--android:background="@android:color/transparent"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_toRightOf="@id/btn_send_image"-->
+            <!--android:layout_toLeftOf="@+id/emoji_button"-->
+            <!--android:layout_centerVertical="true"-->
+            <!--android:hint="Type a message..."/>-->
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:id="@+id/emoji_button"
+            android:src="@drawable/smiley"
+            android:layout_toLeftOf="@+id/btn_send"/>
 
         <ImageButton
             android:layout_width="40dp"
