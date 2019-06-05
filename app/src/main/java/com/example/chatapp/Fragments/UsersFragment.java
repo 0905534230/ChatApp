@@ -1,6 +1,7 @@
 package com.example.chatapp.Fragments;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -12,10 +13,13 @@ import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 
 
 import com.example.chatapp.Adapters.UserAdapter;
+import com.example.chatapp.LoginActivity;
+import com.example.chatapp.MainActivity;
 import com.example.chatapp.Models.User;
 import com.example.chatapp.R;
 import com.google.firebase.auth.FirebaseAuth;
@@ -36,6 +40,7 @@ public class UsersFragment extends Fragment {
     private RecyclerView recyclerView;
     private List<User> mUsers;
     private UserAdapter userAdapter;
+
 
     EditText search_users;
 

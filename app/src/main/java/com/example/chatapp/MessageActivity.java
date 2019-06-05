@@ -2,13 +2,9 @@ package com.example.chatapp;
 
 import android.app.ProgressDialog;
 import android.content.ContentResolver;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
-import android.provider.DocumentsContract;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -17,10 +13,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.webkit.MimeTypeMap;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -32,7 +26,6 @@ import com.example.chatapp.Models.Chat;
 import com.example.chatapp.Models.User;
 import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -65,6 +58,7 @@ public class MessageActivity extends AppCompatActivity {
     ImageButton btn_send;
     //EditText text_send;
     Button btn_send_image;
+    Button btnShowDetail;
 
     MessageAdapter messageAdapter;
     List<Chat> mChat;
@@ -116,6 +110,16 @@ public class MessageActivity extends AppCompatActivity {
 
         profile_image = findViewById(R.id.profile_image);
         username = findViewById(R.id.username);
+
+        btnShowDetail = findViewById(R.id.btn_show_details);
+        btnShowDetail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MessageActivity.this, ShowDetailsActivity.class);
+                startActivity(intent);
+            }
+        });
+
         btn_send = findViewById(R.id.btn_send);
         text_send = findViewById(R.id.text_send);
         btn_send_image = findViewById(R.id.btn_send_image);
