@@ -43,12 +43,12 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Phone Number: "
+                android:text="Phone number: "
                 android:layout_below="@+id/username"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="25dp"
+                android:layout_marginTop="40dp"
                 android:textColor="@color/colorPrimaryDark"
-                android:textStyle="bold"
+                android:textStyle="italic"
                 android:id="@+id/tv_phone_number"
                 android:textSize="18dp"
                 android:layout_alignParentLeft="true"/>
@@ -59,10 +59,11 @@
                 android:text="PhoneNumber"
                 android:layout_below="@+id/username"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="25dp"
+                android:layout_marginTop="40dp"
                 android:textColor="@color/colorPrimaryDark"
-                android:textStyle="bold"
+                android:textStyle="italic"
                 android:id="@+id/phone_number"
+                android:layout_alignParentRight="true"
                 android:textSize="18dp"/>
 
 
@@ -74,7 +75,7 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="15dp"
                 android:textColor="@color/colorPrimaryDark"
-                android:textStyle="bold"
+                android:textStyle="italic"
                 android:id="@+id/tv_email"
                 android:textSize="18dp"
                 android:layout_alignParentLeft="true"/>
@@ -86,19 +87,20 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="15dp"
                 android:textColor="@color/colorPrimaryDark"
-                android:textStyle="bold"
+                android:textStyle="italic"
+                android:layout_alignParentRight="true"
                 android:id="@+id/email"
                 android:textSize="18dp"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Date Of Birth: "
+                android:text="Birthday: "
                 android:layout_below="@+id/email"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="15dp"
                 android:textColor="@color/colorPrimaryDark"
-                android:textStyle="bold"
+                android:textStyle="italic"
                 android:id="@+id/tv_date_of_birth"
                 android:textSize="18dp"
                 android:layout_alignParentLeft="true"/>
@@ -110,8 +112,9 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="15dp"
                 android:textColor="@color/colorPrimaryDark"
-                android:textStyle="bold"
+                android:textStyle="italic"
                 android:id="@+id/date_of_birth"
+                android:layout_alignParentRight="true"
                 android:textSize="18dp"/>
 
 
