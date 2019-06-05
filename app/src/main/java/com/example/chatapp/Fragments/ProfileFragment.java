@@ -46,7 +46,7 @@ import static android.app.Activity.RESULT_OK;
 public class ProfileFragment extends Fragment {
 
     CircleImageView image_profile;
-    TextView username;
+    TextView username, phonenumber, email, dateOfBirth;
 
     DatabaseReference reference;
     FirebaseUser fusers;
@@ -66,6 +66,9 @@ public class ProfileFragment extends Fragment {
 
         image_profile = view.findViewById(R.id.profile_image);
         username = view.findViewById(R.id.username);
+        phonenumber = view.findViewById(R.id.phone_number);
+        email = view.findViewById(R.id.email);
+        dateOfBirth = view.findViewById(R.id.date_of_birth);
 
         storageReference = FirebaseStorage.getInstance().getReference("uploads");
 
@@ -79,6 +82,10 @@ public class ProfileFragment extends Fragment {
                 if(isAdded()){
                     User user = dataSnapshot.getValue(User.class);
                     username.setText(user.getUsername());
+                    phonenumber.setText(user.getPhonenumber());
+                    email.setText(user.getEmail());
+                    dateOfBirth.setText(user.getDateOfBirth());
+
 
                     if(user.getImageURL().equals("default"))
                     {

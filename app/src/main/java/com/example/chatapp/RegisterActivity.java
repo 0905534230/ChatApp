@@ -24,11 +24,15 @@ import com.rengwuxian.materialedittext.MaterialEditText;
 
 import org.w3c.dom.Text;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 
 public class RegisterActivity extends AppCompatActivity {
 
-    MaterialEditText username, email, password;
+    MaterialEditText username, email, password, phonenumber, dateOfBirth;
     Button btn_register;
 
     FirebaseAuth auth;
@@ -52,6 +56,8 @@ public class RegisterActivity extends AppCompatActivity {
         username = findViewById(R.id.username);
         email = findViewById(R.id.email);
         password = findViewById(R.id.password);
+        phonenumber = findViewById(R.id.phone_number);
+        dateOfBirth = findViewById(R.id.date_of_birth);
         btn_register = findViewById(R.id.btn_register);
 
         progressBar = findViewById(R.id.progressBar);
@@ -67,15 +73,18 @@ public class RegisterActivity extends AppCompatActivity {
                 String txt_username = username.getText().toString();
                 String txt_email = email.getText().toString();
                 String txt_password = password.getText().toString();
+                String txt_phonenumber = phonenumber.getText().toString();
+                String txt_date_of_birth = dateOfBirth.getText().toString();
 
-                if(TextUtils.isEmpty(txt_username) || TextUtils.isEmpty(txt_email) || TextUtils.isEmpty(txt_password)){
+
+                if(TextUtils.isEmpty(txt_username) || TextUtils.isEmpty(txt_email) || TextUtils.isEmpty(txt_password) || TextUtils.isEmpty(txt_phonenumber) || TextUtils.isEmpty(txt_date_of_birth)){
                     Toast.makeText(RegisterActivity.this, "All fields are required", Toast.LENGTH_SHORT).show();
 
                 }else if(txt_password.length() < 6){
 
                     Toast.makeText(RegisterActivity.this, "password must be at least 6 characters", Toast.LENGTH_SHORT).show();
                 }else{
-                    Register(txt_username, txt_email, txt_password);
+                    Register(txt_username, txt_email, txt_password, txt_phonenumber, txt_date_of_birth);
 
                 }
             }
@@ -83,7 +92,7 @@ public class RegisterActivity extends AppCompatActivity {
 
     }
 
-    private void Register (final String username, String email, String password){
+    private void Register (final String username, final String email, String password, final String phonenumber, final String dateOfBirth){
 
         auth.createUserWithEmailAndPassword(email,password)
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
@@ -99,6 +108,9 @@ public class RegisterActivity extends AppCompatActivity {
                             HashMap<String , String> hashMap = new HashMap<>();
                             hashMap.put("id" , userId);
                             hashMap.put("username" , username);
+                            hashMap.put("phonenumber", phonenumber);
+                            hashMap.put("email", email);
+                            hashMap.put("dateOfBirth", dateOfBirth);
                             hashMap.put("imageURL", "default");
                             hashMap.put("status", "offline");
                             hashMap.put("search", username.toLowerCase());
@@ -116,7 +128,7 @@ public class RegisterActivity extends AppCompatActivity {
                                 }
                             });
                         }else{
-                            Toast.makeText(RegisterActivity.this, "you can't register with this email and this password", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(RegisterActivity.this, "you can't register with this email or this password", Toast.LENGTH_SHORT).show();
                             progressBar.setVisibility(View.INVISIBLE);
                         }
                     }

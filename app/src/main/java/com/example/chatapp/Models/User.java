@@ -7,14 +7,19 @@ public class User {
     private String imageURL;
     private String status;
     private String search;
+    private String email;
+    private String phonenumber;
+    private String dateOfBirth;
 
-    public User(String id, String username, String imageURL, String status, String search){
+    public User(String id, String username, String imageURL, String status, String search, String email, String phonenumber, String dateOfBirth) {
         this.id = id;
         this.username = username;
         this.imageURL = imageURL;
         this.status = status;
         this.search = search;
-
+        this.email = email;
+        this.phonenumber = phonenumber;
+        this.dateOfBirth = dateOfBirth;
     }
 
     public User() {
@@ -59,5 +64,29 @@ public class User {
 
     public void setSearch(String search) {
         this.search = search;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPhonenumber() {
+        return phonenumber;
+    }
+
+    public void setPhonenumber(String phonenumber) {
+        this.phonenumber = phonenumber;
+    }
+
+    public String getDateOfBirth() {
+        return dateOfBirth;
+    }
+
+    public void setDateOfBirth(String dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
     }
 }
