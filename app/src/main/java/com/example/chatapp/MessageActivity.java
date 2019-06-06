@@ -365,7 +365,7 @@ public class MessageActivity extends AppCompatActivity {
         reference = FirebaseDatabase.getInstance().getReference("Users").child(firebaseUser.getUid());
 
         HashMap<String, Object> hashMap = new HashMap<>();
-        hashMap.put("Status", status);
+        hashMap.put("status", status);
 
         reference.updateChildren(hashMap);
 
